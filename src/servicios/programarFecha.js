@@ -8,7 +8,7 @@ const everyweekday = "00 30 11 * * 1-5"; //Runs  (Monday through Friday) at 11:3
 
 // ---------( 0-59 0-59  0-23  1-31  1-12  0-7 )
 // ---------( Sec  min   hour  dayMh month dayWk )
-const CRON_DEFAULT = everytensecond;
+const CRON_DEFAULT = everydaynight;
 
  function programarFecha(fecha) {
   if (fecha == null) {

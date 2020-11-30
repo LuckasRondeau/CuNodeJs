@@ -2,6 +2,8 @@ const { createServer } = require('./compartido/servidor/Server.js')
 const { crearPacientesDao } = require('./pacientes/dao/PacientesDaoFactory.js')
 const { crearPacientesApi } = require('./pacientes/aplicacion/PacientesApi.js')
 const config = require('../src/config/config.js')
+const { crearTareaCU } = require('./casosdeuso/CU.js')
+const {programarFecha} = require("../src/servicios/programarFecha.js")
 
 let daoPacientes
 let server
@@ -14,7 +16,12 @@ async function main() {
         aplicacion = crearPacientesApi(daoPacientes)
 
         server = await createServer({ aplicacion, port: config.getServerPort() })
-        console.log(`servidor conectado en puerto: ${server.port}`)
+        console.log(`servidor conectado en puerto: ${server.port} y escuchando`)
+        //EJECUTO CASO DE USO
+        const CU = crearTareaCU()
+        // Fecha programada Todos los dias a mediaNoche
+        //CU.invocar(programarFecha("0 0 * * *"))
+        CU.invocar(programarFecha())//fecha por default
     } catch (e) {
         console.log(e.message)
     }

@@ -1,12 +1,11 @@
-const { programarFecha } = require("../../../src/servicios/programarFecha.js")
+const {programarFecha} = require("../../../src/servicios/programarFecha.js")
 const {crearTemporizador} = require( "../../../src/servicios/temporizador.js")
-const { crearPacientesDao } = require('../../pacientes/dao/PacientesDaoFactory')
-const { crearPacientesApi } = require('../../pacientes/aplicacion/PacientesApi')
+const {crearPacientesDao} = require('../../pacientes/dao/PacientesDaoFactory')
+const {crearPacientesApi} = require('../../pacientes/aplicacion/PacientesApi')
 
-
+const FECHA = new Date().toLocaleString();
 function main() {
   //Programo por default el horario de la tarea Y nombre
-  const FECHA = new Date().toLocaleString();
   let fechaCronJob = programarFecha();
   let nombreTemp = "TEMP1";
 
@@ -34,15 +33,11 @@ function main() {
   }, 20000);
 }
 async function mostrar() {
+daoPacientes = await crearPacientesDao()
+api = crearPacientesApi(daoPacientes)
+const pacientes = await api.getAll()
 
-  const FECHA = new Date().toLocaleString();
-  daoPacientes = await crearPacientesDao()
-
-  api = crearPacientesApi(daoPacientes)
-
-  const pacientes = await api.getAll()
-
-  console.log("");
+    console.log("");
     console.log("------------------------------------------------");
     console.log(`    Usuarios registrados al `, FECHA);
     console.log("------------------------------------------------");
