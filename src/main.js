@@ -18,9 +18,7 @@ async function main() {
     } catch (e) {
         console.log(e.message)
     }
-    console.log(config.getCnxObj())
-    console.log(config.getTipoPers())
-    console.log(config.getServerPort())
+   
 }
 
 process.on('SIGINT', async () => {

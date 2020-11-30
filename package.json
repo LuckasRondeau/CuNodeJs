@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/main.js",
     "test": "mocha --recursive --timeout 50000",
-    "tdd": "nodemon --exec mocha --recursive --reporter min"
+    "tdd": "nodemon --exec mocha --recursive --reporter min",
+    "testm":"node src/servicios/test/testmodulo.js"
   },
   "keywords": [],
   "author": "Lucas Rondeau",
@@ -20,6 +21,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.3"
+    "mongodb": "^3.6.3",
+    "node-cron": "^2.0.3"
   }
 }
