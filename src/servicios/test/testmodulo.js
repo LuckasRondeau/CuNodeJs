@@ -1,5 +1,7 @@
 const { programarFecha } = require("../../../src/servicios/programarFecha.js")
 const {crearTemporizador} = require( "../../../src/servicios/temporizador.js")
+const { crearPacientesDao } = require('../../pacientes/dao/PacientesDaoFactory')
+const { crearPacientesApi } = require('../../pacientes/aplicacion/PacientesApi')
 
 
 function main() {
@@ -18,7 +20,7 @@ function main() {
     // ejecuta la tarea programada
     console.log("<<<<<<<<<<<<<<[EVENTO PROGRAMADO]>>>>>>>>>>>>>>>");
     //tarea de ejemplo pacientes dados de alta !
-   // mostrarJson();
+    mostrar();
   }
 
   const id = temp1.crearTarea(fechaCronJob, evento);
@@ -31,5 +33,24 @@ function main() {
     temp1.cancelar(id);
   }, 20000);
 }
+async function mostrar() {
+
+  const FECHA = new Date().toLocaleString();
+  daoPacientes = await crearPacientesDao()
+
+  api = crearPacientesApi(daoPacientes)
+
+  const pacientes = await api.getAll()
+
+  console.log("");
+    console.log("------------------------------------------------");
+    console.log(`    Usuarios registrados al `, FECHA);
+    console.log("------------------------------------------------");
+
+  for (const paciente of pacientes) {    
+      console.log(paciente.nombre);    
+  }
+}
+
 main();
 module.exports = { main }
