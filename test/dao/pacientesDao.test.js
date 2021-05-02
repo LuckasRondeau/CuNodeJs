@@ -82,7 +82,7 @@ describe('dao de pacientes', () => {
     })
 
     describe('add', () => {
-        it('agrega un estudiante a la coleccion', async () => {
+        it('agrega un paciente a la coleccion', async () => {
             const creado1 = crearPaciente(pacVal)
             await dao.add(creado1)
             const pacientes = await dao.getAll()

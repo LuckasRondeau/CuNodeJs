@@ -7,7 +7,7 @@
     "start": "node src/main.js",
     "test": "mocha --recursive --timeout 50000",
     "tdd": "nodemon --exec mocha --recursive --reporter min",
-    "testm":"node src/servicios/test/testmodulo.js"
+    "testm": "node src/servicios/test/testmodulo.js"
   },
   "keywords": [],
   "author": "Lucas Rondeau",
